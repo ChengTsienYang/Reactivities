@@ -28,10 +28,10 @@ namespace API
                 await context.Database.MigrateAsync();
                 await Seed.SeedData(context);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var logger = services.GetRequiredService<Logger<Program>>();
-                logger.LogError(ex,"An error occured during migrating");
+                logger.LogError(ex, "An error occured during migrating");
             }
             await host.RunAsync();
         }
