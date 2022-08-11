@@ -72,14 +72,14 @@ export default class ActivityStore {
 
     private setActivity = (activity: Activity) => {
         activity.date = activity.date.split('T')[0];
-        this, this.activityRegistry.set(activity.id, activity);
+        this.activityRegistry.set(activity.id, activity);
     }
 
     private getActivity = (id: string) => {
         return this.activityRegistry.get(id);
     }
     setLoadingInitial = (state: boolean) => {
-        this, this.loadingInitial = state;
+        this.loadingInitial = state;
     }
 
     createActivity = async (activity: Activity) => {
