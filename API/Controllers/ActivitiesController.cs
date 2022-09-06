@@ -4,18 +4,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Domain;
 using Application.Activities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
     public class ActivitiesController : BaseApiController
     {
-
         [HttpGet]
         public async Task<IActionResult> GetActivities()
         {
-            return HandleResult (await Mediator.Send(new List.Query()));
+            return HandleResult(await Mediator.Send(new List.Query()));
         }
 
+        [Authorize]
         [HttpGet("{id}")] // activities/id
         public async Task<IActionResult> GetActivity(Guid id)
         {
