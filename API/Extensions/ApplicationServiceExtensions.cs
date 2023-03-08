@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Application.Activities;
 using Application.Core;
 using Application.Interfaces;
@@ -42,6 +38,10 @@ namespace API.Extensions
             services.AddScoped<IUserAccessor,UserAccessor>();
             services.AddScoped<IPhotoAccessor, PhotoAccessor>();
             services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
+            // services.AddSignalR();
+            // services.AddFluentValidateionAutoValidation();
+            // services.AddValidatorsFromAssemblyContaining<Create>();
+
             return services;
         }
     }
