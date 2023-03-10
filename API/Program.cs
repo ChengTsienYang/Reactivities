@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using API.Extensions;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using API.Middleware;
+using API.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,18 +41,16 @@ if (builder.Environment.IsDevelopment())
 app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
+app.MapControllers();
+app.MapHub<ChatHub>("/chat");
 // app.UseEndpoints(endpoints =>
 // {
 //     endpoints.MapControllers();
 // });
 
-
-
 using var scope = app.Services.CreateScope();
-
 var services = scope.ServiceProvider;
 
 try
